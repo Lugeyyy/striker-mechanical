@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
-import { rm } from "fs/promises";
+import { rm, mkdir, copyFile } from "fs/promises";
 import path from "path";
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
@@ -145,5 +145,28 @@ const outputTable = result.outputs.map(output => ({
 
 console.table(outputTable);
 const buildTime = (end - start).toFixed(2);
+
+// Copy static assets to output directory
+const assetsDir = path.join(process.cwd(), "src");
+const assetFiles = [
+  "logo.png",
+  "favicon-16x16.png",
+  "favicon-32x32.png",
+  "apple-touch-icon.png"
+];
+
+console.log("\n📦 Copying static assets...");
+for (const asset of assetFiles) {
+  const srcPath = path.join(assetsDir, asset);
+  const destPath = path.join(outdir, asset);
+  
+  if (existsSync(srcPath)) {
+    await mkdir(outdir, { recursive: true });
+    await copyFile(srcPath, destPath);
+    console.log(`  ✓ Copied ${asset}`);
+  } else {
+    console.log(`  ⚠ Skipped ${asset} (not found)`);
+  }
+}
 
 console.log(`\n✅ Build completed in ${buildTime}ms\n`);
