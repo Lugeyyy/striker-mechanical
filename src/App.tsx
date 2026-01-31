@@ -1,17 +1,25 @@
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { Contact } from "@/components/Contact";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { Navigation } from "@/components/Navigation";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import "./index.css";
 
 function AppContent() {
   return (
     <div className="min-h-screen">
-      <Hero />
-      <Services />
-      <Contact />
-      <ThemeToggle />
+      <Navigation />
+      <main>
+        <section id="hero">
+          <Hero />
+        </section>
+        <section id="services">
+          <Services />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
     </div>
   );
 }
