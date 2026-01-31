@@ -1,68 +1,43 @@
 import { serve } from "bun";
-import { readFileSync } from "fs";
-const indexFile = readFileSync("./src/index.html", "utf8");
-import logo from "./logo.png";
+import index from "./index.html";
+import { resolve } from "path";
 
 const server = serve({
-  port: 3000,
-  fetch(req, server) {
-    const url = new URL(req.url);
-    
+  port: 0, // Use random available port
+  routes: {
+    // Serve static files from src/ directory
+    async "/favicon-16x16.png"(req) {
+      const file = Bun.file(resolve("./src/favicon-16x16.png"));
+      return new Response(file);
+    },
+
+    async "/favicon-32x32.png"(req) {
+      const file = Bun.file(resolve("./src/favicon-32x32.png"));
+      return new Response(file);
+    },
+
+    async "/apple-touch-icon.png"(req) {
+      const file = Bun.file(resolve("./src/apple-touch-icon.png"));
+      return new Response(file);
+    },
+
+    async "/logo.png"(req) {
+      const file = Bun.file(resolve("./src/logo.png"));
+      return new Response(file);
+    },
+
     // API routes
-    if (url.pathname.startsWith("/api/hello")) {
-      if (req.method === "GET" && url.pathname === "/api/hello") {
+    "/api/hello": {
+      async GET(req) {
         return Response.json({
           message: "Hello, world!",
           method: "GET",
         });
-      }
-      
-      if (req.method === "PUT" && url.pathname === "/api/hello") {
-        return Response.json({
-          message: "Hello, world!",
-          method: "PUT",
-        });
-      }
-      
-      // Dynamic route for /api/hello/:name
-      const match = url.pathname.match(/^\/api\/hello\/([^\/]+)$/);
-      if (match) {
-        const name = match[1];
-        return Response.json({
-          message: `Hello, ${name}!`,
-        });
-      }
-    }
-    
-    // Serve static assets
-    if (req.url.includes("/src/logo.png")) {
-      return new Response(logo, {
-        headers: {
-          "Content-Type": "image/png",
-        },
-      });
-    }
-    
-    // Serve frontend.tsx
-    if (url.pathname === "/src/frontend.tsx") {
-      try {
-        const frontendCode = readFileSync("./src/frontend.tsx", "utf8");
-        return new Response(frontendCode, {
-          headers: {
-            "Content-Type": "text/typescript; charset=utf-8",
-          },
-        });
-      } catch (error) {
-        return new Response("Frontend file not found", { status: 404 });
-      }
-    }
-    
-    // Serve index.html for all other routes (SPA fallback)
-    return new Response(indexFile, {
-      headers: {
-        "Content-Type": "text/html; charset=utf-8",
       },
-    });
+    },
+
+    // Serve index.html for all unmatched routes (SPA fallback)
+    "/*": index,
   },
 
   development: process.env.NODE_ENV !== "production" && {
