@@ -1,168 +1,275 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Mail, Clock, MapPin, AlertTriangle, CheckCircle } from "lucide-react";
+import { Phone, Mail, Clock, MapPin, AlertTriangle, CheckCircle, Wrench, Zap } from "lucide-react";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-slate-100 to-white dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-6">
-        {/* Enhanced header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold mb-6">
-            <Phone className="w-4 h-4 mr-2" />
-            Get In Touch
+    <section id="contact" className="py-32 concrete-texture relative overflow-hidden">
+      {/* Industrial grid background */}
+      <div 
+        className="absolute inset-0 opacity-5" 
+        style={{
+          backgroundImage: `
+            linear-gradient(var(--concrete-light) 1px, transparent 1px),
+            linear-gradient(90deg, var(--concrete-light) 1px, transparent 1px)
+          `,
+          backgroundSize: '100px 100px'
+        }}
+      />
+      
+      {/* Weld seam decorative elements */}
+      <div className="absolute top-1/3 left-0 right-0 h-px rust-accent opacity-40"></div>
+      <div className="absolute bottom-1/3 left-0 right-0 h-px rust-accent opacity-40"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Brutalist header */}
+        <div className="mb-24">
+          <div className="flex items-center gap-8 mb-8">
+            <div className="flex-grow h-px bg-rust-accent"></div>
+            <div className="metal-surface px-8 py-4 transform rotate-2">
+              <div className="flex items-center gap-4">
+                <Phone className="w-8 h-8 text-rust-accent gear-grind" />
+                <span className="font-mono text-sm tracking-widest text-concrete-light">CONTACT OPERATIONS</span>
+              </div>
+            </div>
+            <div className="flex-grow h-px bg-rust-accent"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6">
-            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Our Experts</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Ready to get your equipment running smoothly? Contact us today for a quote or to schedule service.
-          </p>
+          
+          <div className="text-center">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black stencil-text text-brushed-metal mb-6 leading-none">
+              CONTACT
+              <span className="block text-6xl md:text-7xl lg:text-8xl text-rust-accent">
+                COMMAND
+              </span>
+            </h2>
+            <div className="metal-surface inline-block px-8 py-6 transform -rotate-1">
+              <p className="font-mono text-xl text-concrete-light leading-relaxed max-w-4xl">
+                [ DIRECT COMMUNICATION • RAPID RESPONSE • 24/7 SUPPORT • EMERGENCY PROTOCOLS ]
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Enhanced contact cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {/* Phone Contact */}
-          <Card className="group bg-white dark:bg-slate-800 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-green-600" />
-            <CardHeader className="text-center pb-6">
-              <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Phone className="w-8 h-8" />
+        {/* Industrial contact grid */}
+        <div className="grid md:grid-cols-3 gap-12 mb-24">
+          {/* Phone Command */}
+          <div className="metal-surface p-8 transform rotate-1 mechanical-hover">
+            <div className="relative">
+              <div className="absolute -top-6 -right-6 w-16 h-16 metal-surface flex items-center justify-center">
+                <Phone className="w-10 h-10 text-safety-green" />
               </div>
-              <CardTitle className="text-xl font-bold text-foreground">
-                Call Us
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <CardDescription className="text-muted-foreground mb-6 leading-relaxed">
-                Speak directly with our mechanical experts for immediate assistance and detailed consultations.
-              </CardDescription>
-              <a 
-                href="tel:+17802681188"
-                className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-bold text-xl group-hover:scale-105 transition-transform"
-              >
-                <Phone className="w-5 h-5" />
-                +1 (780) 268-1188
-              </a>
-            </CardContent>
-          </Card>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-black text-brushed-metal mb-2">
+                    PHONE
+                  </h3>
+                  <p className="font-mono text-sm text-concrete-light tracking-widest uppercase">
+                    Direct Line Command
+                  </p>
+                </div>
+                
+                <div className="font-mono text-concrete-light leading-relaxed">
+                  IMMEDIATE TECHNICAL SUPPORT • EXPERT CONSULTATION • EMERGENCY DISPATCH
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-3 h-3 bg-safety-green rounded-full animate-pulse"></div>
+                    <span className="font-mono text-sm text-concrete-light">STATUS: ONLINE</span>
+                  </div>
+                  
+                  <a 
+                    href="tel:+17802681188"
+                    className="inline-block metal-surface px-6 py-3 transform skewX-2 hover:skewX-1 transition-transform"
+                  >
+                    <span className="font-subheading font-black text-xl text-safety-green">
+                      (780) 268-1188
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          {/* Email Contact */}
-          <Card className="group bg-white dark:bg-slate-800 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600" />
-            <CardHeader className="text-center pb-6">
-              <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Mail className="w-8 h-8" />
+          {/* Email Terminal */}
+          <div className="metal-surface p-8 transform -rotate-1 mechanical-hover" style={{ animationDelay: '0.1s' }}>
+            <div className="relative">
+              <div className="absolute -top-6 -right-6 w-16 h-16 metal-surface flex items-center justify-center">
+                <Mail className="w-10 h-10 text-warning-orange" />
               </div>
-              <CardTitle className="text-xl font-bold text-foreground">
-                Email Us
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <CardDescription className="text-muted-foreground mb-6 leading-relaxed">
-                Send detailed inquiries, service requests, and quotes. We typically respond within 24 hours.
-              </CardDescription>
-              <a 
-                href="mailto:ryansteenhart@gmail.com"
-                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold text-xl group-hover:scale-105 transition-transform"
-              >
-                <Mail className="w-5 h-5" />
-                ryansteenhart@gmail.com
-              </a>
-            </CardContent>
-          </Card>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-black text-brushed-metal mb-2">
+                    EMAIL
+                  </h3>
+                  <p className="font-mono text-sm text-concrete-light tracking-widest uppercase">
+                    Digital Terminal
+                  </p>
+                </div>
+                
+                <div className="font-mono text-concrete-light leading-relaxed">
+                  DETAILED QUOTES • TECHNICAL SPECIFICATIONS • SERVICE SCHEDULING • PROJECT FILES
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-3 h-3 bg-warning-orange rounded-full"></div>
+                    <span className="font-mono text-sm text-concrete-light">RESPONSE: &lt;24HR</span>
+                  </div>
+                  
+                  <a 
+                    href="mailto:ryansteenhart@gmail.com"
+                    className="inline-block metal-surface px-6 py-3 transform skewX-2 hover:skewX-1 transition-transform"
+                  >
+                    <span className="font-subheading font-black text-lg text-warning-orange">
+                      RYANSTEENHART@GMAIL.COM
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          {/* Business Hours */}
-          <Card className="group bg-white dark:bg-slate-800 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-purple-600" />
-            <CardHeader className="text-center pb-6">
-              <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Clock className="w-8 h-8" />
+          {/* Operations Schedule */}
+          <div className="metal-surface p-8 transform rotate-1 mechanical-hover" style={{ animationDelay: '0.2s' }}>
+            <div className="relative">
+              <div className="absolute -top-6 -right-6 w-16 h-16 metal-surface flex items-center justify-center">
+                <Clock className="w-10 h-10 text-industrial-yellow" />
               </div>
-              <CardTitle className="text-xl font-bold text-foreground">
-                Business Hours
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <CardDescription className="text-muted-foreground space-y-3">
-                <div className="flex items-center justify-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>Mon-Fri: 8:00 AM - 6:00 PM</span>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-black text-brushed-metal mb-2">
+                    HOURS
+                  </h3>
+                  <p className="font-mono text-sm text-concrete-light tracking-widest uppercase">
+                    Operations Schedule
+                  </p>
                 </div>
-                <div className="flex items-center justify-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-orange-500" />
-                  <span>Saturday: Emergency Only</span>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between metal-surface p-3">
+                    <span className="font-mono text-sm text-concrete-light">MON-FRI</span>
+                    <span className="font-subheading font-black text-industrial-yellow">0800-1800</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between metal-surface p-3">
+                    <span className="font-mono text-sm text-concrete-light">SAT</span>
+                    <span className="font-subheading font-black text-warning-orange">EMERGENCY</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between metal-surface p-3">
+                    <span className="font-mono text-sm text-concrete-light">SUN</span>
+                    <span className="font-subheading font-black text-warning-orange">EMERGENCY</span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-orange-500" />
-                  <span>Sunday: Emergency Only</span>
+                
+                <div className="flex items-center gap-4">
+                  <Zap className="w-4 h-4 text-warning-orange" />
+                  <span className="font-mono text-xs text-concrete-light">24/7 EMERGENCY AVAILABLE</span>
                 </div>
-              </CardDescription>
-            </CardContent>
-          </Card>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Enhanced Service Area */}
-        <Card className="bg-gradient-to-br from-slate-900 to-slate-800 text-white border-0 shadow-2xl mb-16 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20" />
-          <CardHeader className="text-center relative z-10">
-            <div className="inline-flex p-3 rounded-full bg-white/10 backdrop-blur-sm mb-4">
-              <MapPin className="w-8 h-8 text-blue-400" />
-            </div>
-            <CardTitle className="text-3xl font-bold">
-              Service Area
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-center relative z-10">
-            <CardDescription className="text-white/80 text-lg leading-relaxed max-w-3xl mx-auto">
-              We proudly serve the greater metropolitan area and surrounding regions. 
-              Mobile service available within a 50-mile radius. Contact us to confirm service availability in your location.
-            </CardDescription>
-            <div className="mt-8 flex justify-center gap-4">
-              <div className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm">
-                🚐 Mobile Service Available
+        {/* Industrial Service Area */}
+        <div className="mb-24">
+          <div className="metal-surface transform -rotate-1">
+            <div className="relative overflow-hidden p-12">
+              {/* Industrial pattern corners */}
+              <div className="absolute top-0 left-0 w-24 h-24 border-r-2 border-b-2 border-rust-accent"></div>
+              <div className="absolute top-0 right-0 w-24 h-24 border-l-2 border-b-2 border-rust-accent"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 border-r-2 border-t-2 border-rust-accent"></div>
+              <div className="absolute bottom-0 right-0 w-24 h-24 border-l-2 border-t-2 border-rust-accent"></div>
+              
+              <div className="text-center space-y-8 relative z-10">
+                <div className="inline-block metal-surface p-6">
+                  <MapPin className="w-12 h-12 text-rust-accent" />
+                </div>
+                
+                <h3 className="text-4xl md:text-5xl font-black text-brushed-metal leading-none">
+                  SERVICE
+                  <span className="block text-5xl md:text-6xl text-rust-accent">
+                    ZONE
+                  </span>
+                </h3>
+                
+                <div className="metal-surface inline-block px-8 py-6 transform rotate-1">
+                  <p className="font-mono text-xl text-concrete-light max-w-3xl leading-relaxed">
+                    METROPOLITAN OPERATIONS • MOBILE UNITS • 50-MILE RADIUS • ON-SITE REPAIR • HEAVY EQUIPMENT TRANSPORT
+                  </p>
+                </div>
+                
+                <div className="flex flex-wrap justify-center gap-6">
+                  <div className="metal-surface px-6 py-3 transform skewX-2">
+                    <span className="font-mono text-sm text-industrial-yellow">🚐 MOBILE UNITS DEPLOYED</span>
+                  </div>
+                  <div className="metal-surface px-6 py-3 transform -skewX-2">
+                    <span className="font-mono text-sm text-warning-orange">📍 50-MILE COVERAGE</span>
+                  </div>
+                  <div className="metal-surface px-6 py-3 transform skewX-2">
+                    <span className="font-mono text-sm text-safety-green">⚡ RAPID DISPATCH</span>
+                  </div>
+                </div>
               </div>
-              <div className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm">
-                📍 50-Mile Radius
-              </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        {/* Enhanced Emergency Service CTA */}
-        <Card className="bg-gradient-to-br from-red-600 to-orange-600 text-white border-0 shadow-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-700/50 to-orange-700/50" />
-          <CardContent className="relative z-10 p-12 text-center">
-            <div className="inline-flex p-4 rounded-full bg-white/20 backdrop-blur-sm mb-6 animate-pulse">
-              <AlertTriangle className="w-12 h-12" />
+        {/* Emergency Command Center */}
+        <div className="metal-surface transform rotate-1 rust-accent relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-warning-orange transform rotate-45"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-24 h-24 border-4 border-industrial-yellow transform -rotate-12"></div>
             </div>
-            <h3 className="text-3xl md:text-4xl font-black mb-4">
-              24/7 Emergency Service
+          </div>
+          
+          <div className="relative z-10 p-16 text-center">
+            <div className="inline-block mb-8">
+              <div className="w-20 h-20 metal-surface flex items-center justify-center">
+                <AlertTriangle className="w-16 h-16 text-warning-orange welding-spark" />
+              </div>
+            </div>
+            
+            <h3 className="text-4xl md:text-5xl font-black text-white mb-6">
+              EMERGENCY
+              <span className="block text-5xl md:text-6xl text-industrial-yellow">
+                COMMAND
+              </span>
             </h3>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Mechanical problems don't always happen during business hours. 
-              We offer 24/7 emergency service for critical situations.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button 
-                size="lg"
-                className="bg-white text-red-600 hover:bg-slate-100 px-10 py-6 text-xl font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+            
+            <div className="metal-surface inline-block px-8 py-6 transform -rotate-1 mb-8">
+              <p className="font-mono text-xl text-white max-w-2xl leading-relaxed">
+                24/7 CRITICAL RESPONSE • RAPID DEPLOYMENT • EMERGENCY REPAIRS • CITICAL SYSTEM FAILURE • DOWNTIME MINIMIZATION
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-8 justify-center">
+              <button 
+                className="industrial-button bg-warning-orange hover:bg-red-600"
                 onClick={() => window.location.href = 'tel:+17802681188'}
               >
-                <AlertTriangle className="w-5 h-5 mr-2" />
-                Call Emergency Line
-              </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-white hover:bg-white hover:text-red-600 px-10 py-6 text-xl font-bold backdrop-blur-sm transform hover:scale-105 transition-all duration-300"
+                <span className="flex items-center gap-3">
+                  <AlertTriangle className="w-6 h-6" />
+                  EMERGENCY LINE
+                </span>
+              </button>
+              
+              <button 
+                className="metal-surface px-10 py-6 transform skewX-2 transition-transform hover:skewX-1 hover:scale-105"
+                onClick={() => console.log('Service quote clicked')}
               >
-                <CheckCircle className="w-5 h-5 mr-2" />
-                Request Service Quote
-              </Button>
+                <span className="font-subheading font-black text-xl tracking-widest text-white">
+                  // SERVICE REQUEST
+                </span>
+              </button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

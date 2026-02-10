@@ -1,12 +1,61 @@
+/* Import brutalist industrial fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700;900&family=Russo+One&family=Share+Tech+Mono&display=swap');
+
 @import "../styles/globals.css";
 
 @layer base {
   :root {
-    @apply font-sans;
+    /* Industrial Typography System */
+    --font-display: 'Bebas Neue', cursive; /* For massive headlines */
+    --font-heading: 'Russo One', sans-serif; /* For section headings */
+    --font-subheading: 'Roboto Condensed', sans-serif; /* For subheadings */
+    --font-body: system-ui, -apple-system, sans-serif; /* For body text */
+    --font-mono: 'Share Tech Mono', monospace; /* For technical details */
+    
+    /* Brutalist Color Palette */
+    --concrete-dark: #1A1A1A;
+    --concrete-medium: #2A2A2A;
+    --concrete-light: #404040;
+    --raw-steel: #8B8B8D;
+    --brushed-metal: #B8B8B8;
+    --rust-accent: #B7410E;
+    --warning-orange: #FF6B35;
+    --industrial-yellow: #FFD23F;
+    --safety-green: #2ECC40;
+    --oil-black: #0A0A0A;
+    --grease-stain: #1C1C1C;
+    
+    /* Industrial Textures */
+    --noise-texture: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjA1IDAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==');
+    --bolt-pattern: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjIiIGZpbGw9IiMzMzMiLz48L3N2Zz4=');
+    --weld-seam: linear-gradient(90deg, transparent 0%, rgba(255,107,53,0.3) 50%, transparent 100%);
   }
 
   body {
-    @apply grid place-items-center min-w-[320px] min-h-screen relative m-0 bg-background text-foreground;
+    font-family: var(--font-body);
+    background: var(--concrete-dark);
+    color: var(--brushed-metal);
+    background-image: var(--noise-texture);
+    font-variation-settings: 'wght' 400;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Industrial typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 900;
+  }
+  
+  /* Stencil effect for headings */
+  .stencil-text {
+    position: relative;
+    text-shadow: 
+      2px 2px 0 var(--rust-accent),
+      -1px -1px 0 var(--rust-accent),
+      1px -1px 0 var(--rust-accent),
+      -1px 1px 0 var(--rust-accent);
   }
 }
 
@@ -155,16 +204,178 @@ body::before {
   animation: reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Glow effect */
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+/* Industrial Animations */
+
+/* Welding spark effect */
+@keyframes weldingSpark {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
+}
+
+.welding-spark {
+  animation: weldingSpark 0.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Hydraulic piston movement */
+@keyframes hydraulicPiston {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
+}
+
+.hydraulic-motion {
+  animation: hydraulicPiston 2s ease-in-out infinite;
+}
+
+/* Gear grinding effect */
+@keyframes gearGrind {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(0.95); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.gear-grind {
+  animation: gearGrind 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Industrial reveal */
+@keyframes industrialReveal {
+  0% { 
+    opacity: 0; 
+    transform: translateY(50px) rotateX(-10deg);
+    filter: blur(5px);
   }
-  50% {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) rotateX(0deg);
+    filter: blur(0);
   }
 }
 
-.glow-animation {
-  animation: glow 2s ease-in-out infinite;
+.industrial-reveal {
+  animation: industrialReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Rust decay effect */
+@keyframes rustDecay {
+  0%, 100% { filter: hue-rotate(0deg) saturate(1); }
+  50% { filter: hue-rotate(20deg) saturate(1.2); }
+}
+
+.rust-decay {
+  animation: rustDecay 3s ease-in-out infinite;
+}
+
+/* Mechanical hover effect */
+@keyframes mechanicalHover {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 20px rgba(183, 65, 14, 0.3);
+  }
+  50% { 
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(183, 65, 14, 0.5);
+  }
+}
+
+.mechanical-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mechanical-hover:hover {
+  animation: mechanicalHover 0.6s ease-in-out infinite;
+}
+
+/* Industrial Grid Utilities */
+.brutalist-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
+
+.grid-break-left {
+  grid-column: span 7;
+  margin-left: -2rem;
+  padding-left: 2rem;
+}
+
+.grid-break-right {
+  grid-column: span 7;
+  margin-right: -2rem;
+  padding-right: 2rem;
+}
+
+/* Industrial texture overlays */
+.concrete-texture {
+  background-image: 
+    linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%),
+    var(--noise-texture);
+  position: relative;
+}
+
+.concrete-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bolt-pattern);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.metal-surface {
+  background: linear-gradient(135deg, var(--concrete-light) 0%, var(--raw-steel) 50%, var(--concrete-light) 100%);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 0 rgba(0,0,0,0.5),
+    0 4px 20px rgba(0,0,0,0.8);
+}
+
+.rust-accent {
+  background: var(--rust-accent);
+  position: relative;
+}
+
+.rust-accent::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--weld-seam);
+  opacity: 0.6;
+}
+
+/* Brutalist button styles */
+.industrial-button {
+  background: var(--rust-accent);
+  color: white;
+  border: none;
+  padding: 1.2rem 2.4rem;
+  font-family: var(--font-subheading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  transform: skew(-2deg);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.industrial-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.industrial-button:hover::before {
+  left: 100%;
+}
+
+.industrial-button:hover {
+  transform: skew(-2deg) translateY(-2px);
+  box-shadow: 0 8px 30px rgba(183, 65, 14, 0.5);
 }

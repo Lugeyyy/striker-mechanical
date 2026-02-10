@@ -1,153 +1,293 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wrench, Cog, Bike, Search } from "lucide-react";
+import { Wrench, Cog, Bike, Search, Zap, Hammer, Settings, Wrench as Tool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Services() {
   const services = [
     {
-      title: "Mechanical Repair & Diagnostics",
-      description: "Comprehensive diagnostics and repair services for all mechanical systems. We identify issues quickly and fix them right the first time.",
+      title: "HEAVY REPAIR & DIAGNOSTICS",
+      subtitle: "Industrial-Grade Analysis",
+      description: "BRUTAL DIAGNOSTIC SYSTEMS • MECHANICAL FAILURE ANALYSIS • COMPREHENSIVE REPAIR PROTOCOLS",
       icon: Wrench,
-      color: "blue",
-      features: ["Advanced Diagnostics", "Quick Turnaround", "Quality Parts"]
+      accent: "rust",
+      features: ["ADVANCED OBD-II", "HYDRAULIC SYSTEMS", "HEAVY DUTY REPAIRS"],
+      spec: "DIAGNOSTIC ACCURACY: 99.7%"
     },
     {
-      title: "Engine & Drivetrain Work",
-      description: "Specialized engine repair, transmission service, and drivetrain maintenance for optimal performance and longevity.",
+      title: "ENGINE & DRIVETRAIN",
+      subtitle: "Powertrain Excellence", 
+      description: "COMPLETE ENGINE OVERHAUL • TRANSMISSION REBUILD • PERFORMANCE OPTIMIZATION • TORQUE MANAGEMENT",
       icon: Cog,
-      color: "green",
-      features: ["Engine Overhaul", "Transmission Service", "Performance Tuning"]
+      accent: "warning",
+      features: ["V8/V12 SPECIALISTS", "TURBO SYSTEMS", "DRIVETRAIN ENGINEERING"],
+      spec: "TORQUE CAPACITY: 1000+ FT-LBS"
     },
     {
-      title: "Powersports & Off-Road Repair",
-      description: "Expert service for motorcycles, ATVs, and other powersports vehicles. We understand the unique demands of off-road equipment.",
+      title: "POWERSPORTS & OFF-ROAD",
+      subtitle: "Extreme Terrain Specialists",
+      description: "MOTORCYCLE • ATV • UTV • DIRT BIKE • SNOWMOBILE • OFF-ROAD VEHICLE EXPERT REPAIR",
       icon: Bike,
-      color: "purple",
-      features: ["Motorcycle Service", "ATV Repair", "Off-Road Expertise"]
+      accent: "safety",
+      features: ["RACE TUNING", "SUSPENSION WORK", "ROLL CAGE FABRICATION"],
+      spec: "TERRAIN RATING: EXTREME"
     },
     {
-      title: "Preventative Maintenance",
-      description: "Regular maintenance schedules and thorough inspections to keep your equipment running reliably and prevent costly breakdowns.",
-      icon: Search,
-      color: "orange",
-      features: ["Scheduled Service", "Safety Inspections", "Performance Checks"]
+      title: "PREVENTATIVE MAINTENANCE",
+      subtitle: "Scheduled Service Protocols",
+      description: "FACTORY MAINTENANCE • CUSTOM SERVICE INTERVALS • PREDICTIVE ANALYSIS • WARRANTY COMPLIANCE",
+      icon: Settings,
+      accent: "industrial",
+      features: ["OEM PARTS", "FLEET SERVICE", "DIGITAL RECORDS"],
+      spec: "UPTIME GUARANTEE: 99%"
     }
   ];
 
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case "blue":
-        return "from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700";
-      case "green":
-        return "from-green-500 to-green-600 hover:from-green-600 hover:to-green-700";
-      case "purple":
-        return "from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700";
-      case "orange":
-        return "from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700";
+  const getAccentStyles = (accent: string) => {
+    switch (accent) {
+      case "rust":
+        return {
+          bg: "var(--rust-accent)",
+          light: "rgba(183, 65, 14, 0.2)",
+          border: "#B7410E"
+        };
+      case "warning":
+        return {
+          bg: "var(--warning-orange)",
+          light: "rgba(255, 107, 53, 0.2)",
+          border: "#FF6B35"
+        };
+      case "safety":
+        return {
+          bg: "var(--safety-green)",
+          light: "rgba(46, 204, 64, 0.2)",
+          border: "#2ECC40"
+        };
+      case "industrial":
+        return {
+          bg: "var(--industrial-yellow)",
+          light: "rgba(255, 210, 63, 0.2)",
+          border: "#FFD23F"
+        };
       default:
-        return "from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700";
+        return {
+          bg: "var(--raw-steel)",
+          light: "rgba(139, 139, 141, 0.2)",
+          border: "#8B8B8D"
+        };
     }
   };
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-6">
-        {/* Enhanced header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold mb-6">
-            <Wrench className="w-4 h-4 mr-2" />
-            Professional Services
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Expert Services</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            From routine maintenance to complex repairs, we provide comprehensive mechanical services 
-            to keep your equipment running at peak performance.
-          </p>
-        </div>
-
-        {/* Enhanced service cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <Card key={index} className="group relative bg-white dark:bg-slate-800 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
-                {/* Gradient top border */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${getColorClasses(service.color)}`} />
-                
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-transparent to-black dark:to-white" />
-                
-                <CardHeader className="text-center pb-6 relative z-10">
-                  {/* Enhanced icon */}
-                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${getColorClasses(service.color)} text-white mb-6 transform group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <Icon className="w-8 h-8" />
-                  </div>
-                  <CardTitle className="text-xl font-bold text-foreground mb-3">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <CardDescription className="text-muted-foreground leading-relaxed mb-6 text-center">
-                    {service.description}
-                  </CardDescription>
-                  
-                  {/* Service features */}
-                  <div className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-muted-foreground">
-                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${getColorClasses(service.color)} mr-3`} />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Learn more button */}
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    className={`w-full group/btn bg-gradient-to-r ${getColorClasses(service.color)} text-white hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
-                  >
-                    Learn More
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Enhanced call-to-action */}
-        <div className="text-center">
-          <Card className="bg-gradient-to-br from-slate-900 to-slate-800 text-white border-0 shadow-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20" />
-            <CardContent className="relative z-10 p-12">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Need a Custom Solution?
-              </h3>
-              <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-                Don't see exactly what you need? Our expert team specializes in custom mechanical solutions 
-                tailored to your specific requirements.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg"
-                  className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => console.log('Custom solution clicked')}
-                >
-                  Discuss Your Project
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-white/30 text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg font-semibold backdrop-blur-sm transform hover:scale-105 transition-all duration-300"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  View All Services
-                </Button>
+    <section id="services" className="py-32 concrete-texture relative overflow-hidden">
+      {/* Industrial grid background */}
+      <div 
+        className="absolute inset-0 opacity-5" 
+        style={{
+          backgroundImage: `
+            linear-gradient(var(--concrete-light) 1px, transparent 1px),
+            linear-gradient(90deg, var(--concrete-light) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px'
+        }}
+      />
+      
+      {/* Weld seam decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px rust-accent opacity-30"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px rust-accent opacity-30"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Brutalist header */}
+        <div className="mb-24">
+          <div className="flex items-center gap-8 mb-8">
+            <div className="flex-grow h-px bg-rust-accent"></div>
+            <div className="metal-surface px-8 py-4 transform -rotate-2">
+              <div className="flex items-center gap-4">
+                <Hammer className="w-8 h-8 text-rust-accent" />
+                <span className="font-mono text-sm tracking-widest text-concrete-light">HEAVY DUTY SERVICES</span>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+            <div className="flex-grow h-px bg-rust-accent"></div>
+          </div>
+          
+          <div className="text-center">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black stencil-text text-brushed-metal mb-6 leading-none">
+              INDUSTRIAL
+              <span className="block text-6xl md:text-7xl lg:text-8xl text-rust-accent">
+                SERVICES
+              </span>
+            </h2>
+            <div className="metal-surface inline-block px-8 py-6 transform rotate-1">
+              <p className="font-mono text-xl text-concrete-light leading-relaxed max-w-4xl">
+                [ FACTORY-TRAINING • MIL-SPEC TOOLS • HEAVY-DUTY EQUIPMENT • EXTREME CONDITIONS ]
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Brutalist service cards with grid-breaking layout */}
+        <div className="relative mb-32">
+          {/* Main service card - full width */}
+          <div className="mb-16">
+            {(() => {
+              const mainService = services[0];
+              const Icon = mainService.icon;
+              const accent = getAccentStyles(mainService.accent);
+              
+              return (
+                <div className="metal-surface transform rotate-1 mechanical-hover">
+                  <div className="relative overflow-hidden">
+                    {/* Weld seam accent */}
+                    <div className="absolute top-0 left-0 right-0 h-2" style={{ background: accent.bg }}></div>
+                    
+                    <div className="grid md:grid-cols-2 gap-12 p-12">
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-6">
+                          <div className="w-20 h-20 metal-surface flex items-center justify-center">
+                            <Icon className="w-12 h-12" style={{ color: accent.border }} />
+                          </div>
+                          <div>
+                            <h3 className="text-3xl font-black text-brushed-metal leading-none mb-2">
+                              {mainService.title}
+                            </h3>
+                            <p className="font-mono text-sm text-concrete-light tracking-widest">
+                              {mainService.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="font-mono text-xl text-concrete-light leading-relaxed">
+                          {mainService.description}
+                        </div>
+                        
+                        <div className="flex items-center gap-4">
+                          <div className="w-px h-12" style={{ background: accent.border }}></div>
+                          <span className="font-mono text-sm" style={{ color: accent.bg }}>
+                            {mainService.spec}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-6">
+                        {mainService.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-4">
+                            <div className="w-8 h-8 flex items-center justify-center" style={{ background: accent.light }}>
+                              <div className="w-2 h-2 rounded-full" style={{ background: accent.bg }}></div>
+                            </div>
+                            <span className="font-subheading font-bold text-concrete-light">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+          
+          {/* Secondary services - asymmetric grid */}
+          <div className="grid md:grid-cols-2 gap-12">
+            {services.slice(1).map((service, index) => {
+              const Icon = service.icon;
+              const accent = getAccentStyles(service.accent);
+              const rotateClass = index % 2 === 0 ? 'rotate-1' : '-rotate-1';
+              
+              return (
+                <div key={index} className={`metal-surface p-8 ${rotateClass} mechanical-hover`} style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="relative">
+                    <div className="absolute -top-4 -left-4 w-20 h-20 flex items-center justify-center" style={{ background: accent.light }}>
+                      <Icon className="w-10 h-10" style={{ color: accent.bg }} />
+                    </div>
+                    
+                    <div className="pt-16 space-y-6">
+                      <h4 className="text-2xl font-black text-brushed-metal leading-none">
+                        {service.title}
+                      </h4>
+                      
+                      <p className="font-mono text-sm text-concrete-light tracking-widest uppercase">
+                        {service.subtitle}
+                      </p>
+                      
+                      <p className="font-mono text-concrete-light leading-relaxed">
+                        {service.description}
+                      </p>
+                      
+                      <div className="space-y-3">
+                        {service.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-3">
+                            <div className="w-2 h-2 rounded-full" style={{ background: accent.bg }}></div>
+                            <span className="font-subheading text-sm text-concrete-light">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <div className="pt-4 border-t" style={{ borderColor: accent.border, opacity: 0.3 }}>
+                        <span className="font-mono text-xs" style={{ color: accent.bg }}>
+                          {service.spec}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Brutalist call-to-action */}
+        <div className="relative">
+          <div className="metal-surface transform -rotate-1">
+            <div className="relative overflow-hidden">
+              {/* Industrial pattern overlay */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-32 h-32 border-r-2 border-b-2 border-rust-accent transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute bottom-0 right-0 w-32 h-32 border-l-2 border-t-2 border-rust-accent transform translate-x-1/2 translate-y-1/2"></div>
+              </div>
+              
+              <div className="p-16 text-center relative z-10">
+                <div className="inline-block mb-8">
+                  <Tool className="w-16 h-16 text-rust-accent" />
+                </div>
+                
+                <h3 className="text-4xl md:text-5xl font-black text-brushed-metal mb-6">
+                  CUSTOM MECHANICAL
+                  <span className="block text-5xl md:text-6xl text-rust-accent">
+                    SOLUTIONS
+                  </span>
+                </h3>
+                
+                <div className="metal-surface inline-block px-8 py-6 transform rotate-1 mb-8">
+                  <p className="font-mono text-xl text-concrete-light max-w-2xl">
+                    SPECIALIZED PROTOTYPING • CUSTOM FABRICATION • MILITARY-SPEC • R&D CONSULTING
+                  </p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-8 justify-center">
+                  <button 
+                    className="industrial-button"
+                    onClick={() => console.log('Custom solution clicked')}
+                  >
+                    <span className="flex items-center gap-3">
+                      <Zap className="w-6 h-6" />
+                      CUSTOM PROJECT
+                    </span>
+                  </button>
+                  
+                  <button 
+                    className="metal-surface px-10 py-6 transform skewX-2 transition-transform hover:skewX-1 hover:scale-105"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    <span className="font-subheading font-black text-xl tracking-widest text-concrete-light">
+                      // ALL SERVICES
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
