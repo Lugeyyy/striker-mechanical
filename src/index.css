@@ -12,29 +12,48 @@
     --font-body: system-ui, -apple-system, sans-serif; /* For body text */
     --font-mono: 'Share Tech Mono', monospace; /* For technical details */
     
-    /* Brutalist Color Palette */
-    --concrete-dark: #1A1A1A;
-    --concrete-medium: #2A2A2A;
-    --concrete-light: #404040;
-    --raw-steel: #8B8B8D;
-    --brushed-metal: #B8B8B8;
-    --rust-accent: #B7410E;
-    --warning-orange: #FF6B35;
-    --industrial-yellow: #FFD23F;
-    --safety-green: #2ECC40;
-    --oil-black: #0A0A0A;
-    --grease-stain: #1C1C1C;
+    /* Black & Red Color Palette */
+    --blood-red: #660000;
+    --blood-red-bright: #9F0101;
+    --blood-red-light: rgba(102, 0, 0, 0.15);
+    --blood-red-glow: rgba(159, 1, 1, 0.4);
+    --blood-red-echo: rgba(102, 0, 0, 0.08);
+    --blood-red-pattern: rgba(159, 1, 1, 0.05);
+    
+    --black-pure: #000000;
+    --black-charcoal: #000000;
+    --black-oil: #000000;
+    --black-soot: #000000;
+    --black-deep: #000000;
+    
+    --silver-chrome: #C0C0C0;
+    --bone-white: #F5F5DC;
+    --steel-gray: #8B8B8D;
+    --metal-light: #D3D3D3;
+    
+    /* Legacy compatibility */
+    --concrete-dark: var(--black-charcoal);
+    --concrete-medium: var(--black-soot);
+    --concrete-light: var(--steel-gray);
+    --raw-steel: var(--steel-gray);
+    --brushed-metal: var(--silver-chrome);
+    --rust-accent: var(--blood-red);
+    --warning-orange: var(--blood-red);
+    --industrial-yellow: var(--silver-chrome);
+    --safety-green: var(--blood-red);
+    --oil-black: var(--black-oil);
+    --grease-stain: var(--black-deep);
     
     /* Industrial Textures */
     --noise-texture: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjA1IDAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==');
     --bolt-pattern: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMiIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjIiIGZpbGw9IiMzMzMiLz48L3N2Zz4=');
-    --weld-seam: linear-gradient(90deg, transparent 0%, rgba(255,107,53,0.3) 50%, transparent 100%);
+    --weld-seam: linear-gradient(90deg, transparent 0%, rgba(159,1,1,0.3) 50%, transparent 100%);
   }
 
   body {
     font-family: var(--font-body);
-    background: var(--concrete-dark);
-    color: var(--brushed-metal);
+    background: var(--black-pure);
+    color: var(--silver-chrome);
     background-image: var(--noise-texture);
     font-variation-settings: 'wght' 400;
     letter-spacing: 0.01em;
@@ -271,11 +290,11 @@ body::before {
 @keyframes mechanicalHover {
   0%, 100% { 
     transform: translateY(0) scale(1);
-    box-shadow: 0 4px 20px rgba(183, 65, 14, 0.3);
+    box-shadow: 0 4px 20px rgba(159, 1, 1, 0.3);
   }
   50% { 
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(183, 65, 14, 0.5);
+    box-shadow: 0 12px 40px rgba(159, 1, 1, 0.4);
   }
 }
 
@@ -324,19 +343,22 @@ body::before {
 }
 
 .metal-surface {
-  background: linear-gradient(135deg, var(--concrete-light) 0%, var(--raw-steel) 50%, var(--concrete-light) 100%);
+  background: 
+    linear-gradient(135deg, var(--black-pure) 0%, rgba(102, 0, 0, 0.1) 30%, var(--steel-gray) 50%, rgba(159, 1, 1, 0.08) 70%, var(--black-pure) 100%),
+    linear-gradient(45deg, rgba(102, 0, 0, 0.03) 25%, transparent 25%, transparent 75%, rgba(159, 1, 1, 0.03) 75%);
   box-shadow: 
-    inset 0 1px 0 rgba(255,255,255,0.1),
-    inset 0 -1px 0 rgba(0,0,0,0.5),
-    0 4px 20px rgba(0,0,0,0.8);
-}
-
-.rust-accent {
-  background: var(--rust-accent);
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    inset 0 -1px 0 rgba(102, 0, 0, 0.3),
+    0 4px 20px rgba(0,0,0,1);
   position: relative;
 }
 
-.rust-accent::after {
+.blood-accent {
+  background: var(--blood-red);
+  position: relative;
+}
+
+.blood-accent::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -344,10 +366,22 @@ body::before {
   opacity: 0.6;
 }
 
+.metal-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(159, 1, 1, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(102, 0, 0, 0.03) 0%, transparent 40%),
+    linear-gradient(45deg, transparent 48%, rgba(102, 0, 0, 0.01) 50%, transparent 52%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* Brutalist button styles */
 .industrial-button {
-  background: var(--rust-accent);
-  color: white;
+  background: var(--blood-red);
+  color: var(--bone-white);
   border: none;
   padding: 1.2rem 2.4rem;
   font-family: var(--font-subheading);
@@ -377,5 +411,5 @@ body::before {
 
 .industrial-button:hover {
   transform: skew(-2deg) translateY(-2px);
-  box-shadow: 0 8px 30px rgba(183, 65, 14, 0.5);
+  box-shadow: 0 8px 30px rgba(159, 1, 1, 0.4);
 }

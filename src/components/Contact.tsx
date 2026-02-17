@@ -18,27 +18,27 @@ export function Contact() {
       />
       
       {/* Weld seam decorative elements */}
-      <div className="absolute top-1/3 left-0 right-0 h-px rust-accent opacity-40"></div>
-      <div className="absolute bottom-1/3 left-0 right-0 h-px rust-accent opacity-40"></div>
+      <div className="absolute top-1/3 left-0 right-0 h-px bg-blood-red-echo opacity-50"></div>
+      <div className="absolute bottom-1/3 left-0 right-0 h-px bg-blood-red-echo opacity-50"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Brutalist header */}
         <div className="mb-24">
           <div className="flex items-center gap-8 mb-8">
-            <div className="flex-grow h-px bg-rust-accent"></div>
-            <div className="metal-surface px-8 py-4 transform rotate-2">
-              <div className="flex items-center gap-4">
-                <Phone className="w-8 h-8 text-rust-accent gear-grind" />
-                <span className="font-mono text-sm tracking-widest text-concrete-light">CONTACT OPERATIONS</span>
+              <div className="flex-grow h-px bg-blood-red-echo"></div>
+              <div className="metal-surface px-8 py-4 transform rotate-2">
+                <div className="flex items-center gap-4">
+                  <Phone style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 3px rgba(159, 1, 1, 0.4))' }} className="w-8 h-8 gear-grind" />
+                  <span className="font-mono text-sm tracking-widest text-steel-gray">CONTACT OPERATIONS</span>
+                </div>
               </div>
-            </div>
-            <div className="flex-grow h-px bg-rust-accent"></div>
+              <div className="flex-grow h-px bg-blood-red-echo"></div>
           </div>
           
           <div className="text-center">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black stencil-text text-brushed-metal mb-6 leading-none">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black stencil-text text-silver-chrome mb-6 leading-none">
               CONTACT
-              <span className="block text-6xl md:text-7xl lg:text-8xl text-rust-accent">
+              <span style={{ color: 'var(--blood-red-bright)', textShadow: '0 0 4px rgba(159, 1, 1, 0.2)' }} className="block text-6xl md:text-7xl lg:text-8xl">
                 COMMAND
               </span>
             </h2>

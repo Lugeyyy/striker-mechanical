@@ -16,7 +16,7 @@ export function Services() {
     {
       title: "ENGINE & DRIVETRAIN",
       subtitle: "Powertrain Excellence", 
-      description: "COMPLETE ENGINE OVERHAUL • TRANSMISSION REBUILD • PERFORMANCE OPTIMIZATION • TORQUE MANAGEMENT",
+      description: "COMPLETE ENGINE OVERHAUL • TRANSMISSION CHANGE/SWAP • PERFORMANCE OPTIMIZATION • TORQUE MANAGEMENT",
       icon: Cog,
       accent: "warning",
       features: ["V8/V12 SPECIALISTS", "TURBO SYSTEMS", "DRIVETRAIN ENGINEERING"],
@@ -28,13 +28,13 @@ export function Services() {
       description: "MOTORCYCLE • ATV • UTV • DIRT BIKE • SNOWMOBILE • OFF-ROAD VEHICLE EXPERT REPAIR",
       icon: Bike,
       accent: "safety",
-      features: ["RACE TUNING", "SUSPENSION WORK", "ROLL CAGE FABRICATION"],
+      features: ["RACE TUNING", "SUSPENSION WORK", "ACCESSORY INSTALLATION"],
       spec: "TERRAIN RATING: EXTREME"
     },
     {
       title: "PREVENTATIVE MAINTENANCE",
       subtitle: "Scheduled Service Protocols",
-      description: "FACTORY MAINTENANCE • CUSTOM SERVICE INTERVALS • PREDICTIVE ANALYSIS • WARRANTY COMPLIANCE",
+      description: "FACTORY MAINTENANCE • CUSTOM SERVICE INTERVALS • PREDICTIVE ANALYSIS",
       icon: Settings,
       accent: "industrial",
       features: ["OEM PARTS", "FLEET SERVICE", "DIGITAL RECORDS"],
@@ -46,33 +46,33 @@ export function Services() {
     switch (accent) {
       case "rust":
         return {
-          bg: "var(--rust-accent)",
-          light: "rgba(183, 65, 14, 0.2)",
-          border: "#B7410E"
+          bg: "var(--blood-red)",
+          light: "rgba(139, 0, 0, 0.2)",
+          border: "#8B0000"
         };
       case "warning":
         return {
-          bg: "var(--warning-orange)",
-          light: "rgba(255, 107, 53, 0.2)",
-          border: "#FF6B35"
+          bg: "var(--blood-red-bright)",
+          light: "var(--blood-red-light)",
+          border: "var(--blood-red-bright)"
         };
       case "safety":
         return {
-          bg: "var(--safety-green)",
-          light: "rgba(46, 204, 64, 0.2)",
-          border: "#2ECC40"
+          bg: "var(--blood-red)",
+          light: "var(--blood-red-light)",
+          border: "var(--blood-red)"
         };
       case "industrial":
         return {
-          bg: "var(--industrial-yellow)",
-          light: "rgba(255, 210, 63, 0.2)",
-          border: "#FFD23F"
+          bg: "var(--silver-chrome)",
+          light: "rgba(192, 192, 192, 0.15)",
+          border: "var(--silver-chrome)"
         };
       default:
         return {
-          bg: "var(--raw-steel)",
-          light: "rgba(139, 139, 141, 0.2)",
-          border: "#8B8B8D"
+          bg: "var(--blood-red-bright)",
+          light: "var(--blood-red-light)",
+          border: "var(--blood-red-bright)"
         };
     }
   };
@@ -84,41 +84,41 @@ export function Services() {
         className="absolute inset-0 opacity-5" 
         style={{
           backgroundImage: `
-            linear-gradient(var(--concrete-light) 1px, transparent 1px),
-            linear-gradient(90deg, var(--concrete-light) 1px, transparent 1px)
+            linear-gradient(var(--blood-red-pattern) 1px, transparent 1px),
+            linear-gradient(90deg, var(--blood-red-pattern) 1px, transparent 1px)
           `,
           backgroundSize: '80px 80px'
         }}
       />
       
       {/* Weld seam decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-px rust-accent opacity-30"></div>
-      <div className="absolute bottom-0 left-0 w-full h-px rust-accent opacity-30"></div>
+      <div className="absolute top-0 left-0 w-full h-px" style={{ background: 'var(--blood-red-echo)', opacity: 0.4 }}></div>
+      <div className="absolute bottom-0 left-0 w-full h-px" style={{ background: 'var(--blood-red-echo)', opacity: 0.4 }}></div>
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Brutalist header */}
         <div className="mb-24">
-          <div className="flex items-center gap-8 mb-8">
-            <div className="flex-grow h-px bg-rust-accent"></div>
-            <div className="metal-surface px-8 py-4 transform -rotate-2">
-              <div className="flex items-center gap-4">
-                <Hammer className="w-8 h-8 text-rust-accent" />
-                <span className="font-mono text-sm tracking-widest text-concrete-light">HEAVY DUTY SERVICES</span>
+            <div className="flex items-center gap-8 mb-8">
+              <div className="flex-grow h-px" style={{ background: 'var(--blood-red-echo)' }}></div>
+              <div className="metal-surface px-8 py-4 transform -rotate-2">
+                <div className="flex items-center gap-4">
+                  <Hammer style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 3px rgba(159, 1, 1, 0.4))' }} className="w-8 h-8 gear-grind" />
+                  <span className="font-mono text-sm tracking-widest text-steel-gray">HEAVY DUTY SERVICES</span>
+                </div>
               </div>
+              <div className="flex-grow h-px" style={{ background: 'var(--blood-red-echo)' }}></div>
             </div>
-            <div className="flex-grow h-px bg-rust-accent"></div>
-          </div>
           
           <div className="text-center">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black stencil-text text-brushed-metal mb-6 leading-none">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black stencil-text text-silver-chrome mb-6 leading-none">
               INDUSTRIAL
-              <span className="block text-6xl md:text-7xl lg:text-8xl text-rust-accent">
+              <span style={{ color: 'var(--blood-red-bright)', textShadow: '0 0 4px rgba(159, 1, 1, 0.2)' }} className="block text-6xl md:text-7xl lg:text-8xl">
                 SERVICES
               </span>
             </h2>
             <div className="metal-surface inline-block px-8 py-6 transform rotate-1">
-              <p className="font-mono text-xl text-concrete-light leading-relaxed max-w-4xl">
-                [ FACTORY-TRAINING • MIL-SPEC TOOLS • HEAVY-DUTY EQUIPMENT • EXTREME CONDITIONS ]
+              <p className="font-mono text-xl text-steel-gray leading-relaxed max-w-4xl">
+                [ FABRICATION AND WELDING • INSTALLATION AND SETUP ]
               </p>
             </div>
           </div>
@@ -143,21 +143,21 @@ export function Services() {
                       <div className="space-y-6">
                         <div className="flex items-center gap-6">
                           <div className="w-20 h-20 metal-surface flex items-center justify-center">
-                            <Icon className="w-12 h-12" style={{ color: accent.border }} />
+                            <Icon className="w-12 h-12" style={{ color: accent.border, filter: accent.border === 'var(--blood-red-bright)' ? 'drop-shadow(0 0 3px rgba(159, 1, 1, 0.4))' : 'none' }} />
                           </div>
                           <div>
-                            <h3 className="text-3xl font-black text-brushed-metal leading-none mb-2">
-                              {mainService.title}
-                            </h3>
-                            <p className="font-mono text-sm text-concrete-light tracking-widest">
-                              {mainService.subtitle}
-                            </p>
+                         <h3 className="text-3xl font-black text-silver-chrome leading-none mb-2">
+                               {mainService.title}
+                             </h3>
+                             <p className="font-mono text-sm text-steel-gray tracking-widest">
+                               {mainService.subtitle}
+                             </p>
                           </div>
                         </div>
                         
-                        <div className="font-mono text-xl text-concrete-light leading-relaxed">
-                          {mainService.description}
-                        </div>
+                         <div className="font-mono text-xl text-steel-gray leading-relaxed">
+                           {mainService.description}
+                         </div>
                         
                         <div className="flex items-center gap-4">
                           <div className="w-px h-12" style={{ background: accent.border }}></div>
@@ -173,9 +173,9 @@ export function Services() {
                             <div className="w-8 h-8 flex items-center justify-center" style={{ background: accent.light }}>
                               <div className="w-2 h-2 rounded-full" style={{ background: accent.bg }}></div>
                             </div>
-                            <span className="font-subheading font-bold text-concrete-light">
-                              {feature}
-                            </span>
+                             <span className="font-subheading font-bold text-steel-gray">
+                               {feature}
+                             </span>
                           </div>
                         ))}
                       </div>
@@ -201,25 +201,25 @@ export function Services() {
                     </div>
                     
                     <div className="pt-16 space-y-6">
-                      <h4 className="text-2xl font-black text-brushed-metal leading-none">
-                        {service.title}
-                      </h4>
-                      
-                      <p className="font-mono text-sm text-concrete-light tracking-widest uppercase">
-                        {service.subtitle}
-                      </p>
-                      
-                      <p className="font-mono text-concrete-light leading-relaxed">
-                        {service.description}
-                      </p>
+                       <h4 className="text-2xl font-black text-silver-chrome leading-none">
+                         {service.title}
+                       </h4>
+                       
+                       <p className="font-mono text-sm text-steel-gray tracking-widest uppercase">
+                         {service.subtitle}
+                       </p>
+                       
+                       <p className="font-mono text-steel-gray leading-relaxed">
+                         {service.description}
+                       </p>
                       
                       <div className="space-y-3">
                         {service.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-3">
                             <div className="w-2 h-2 rounded-full" style={{ background: accent.bg }}></div>
-                            <span className="font-subheading text-sm text-concrete-light">
-                              {feature}
-                            </span>
+                             <span className="font-subheading text-sm text-steel-gray">
+                               {feature}
+                             </span>
                           </div>
                         ))}
                       </div>
@@ -243,27 +243,27 @@ export function Services() {
             <div className="relative overflow-hidden">
               {/* Industrial pattern overlay */}
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-32 h-32 border-r-2 border-b-2 border-rust-accent transform -translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-0 w-32 h-32 border-l-2 border-t-2 border-rust-accent transform translate-x-1/2 translate-y-1/2"></div>
+                 <div className="absolute top-0 left-0 w-32 h-32 border-r-2 border-b-2 border-blood-red transform -translate-x-1/2 -translate-y-1/2"></div>
+                 <div className="absolute bottom-0 right-0 w-32 h-32 border-l-2 border-t-2 border-blood-red transform translate-x-1/2 translate-y-1/2"></div>
               </div>
               
               <div className="p-16 text-center relative z-10">
-                <div className="inline-block mb-8">
-                  <Tool className="w-16 h-16 text-rust-accent" />
-                </div>
-                
-                <h3 className="text-4xl md:text-5xl font-black text-brushed-metal mb-6">
-                  CUSTOM MECHANICAL
-                  <span className="block text-5xl md:text-6xl text-rust-accent">
-                    SOLUTIONS
-                  </span>
-                </h3>
-                
-                <div className="metal-surface inline-block px-8 py-6 transform rotate-1 mb-8">
-                  <p className="font-mono text-xl text-concrete-light max-w-2xl">
-                    SPECIALIZED PROTOTYPING • CUSTOM FABRICATION • MILITARY-SPEC • R&D CONSULTING
-                  </p>
-                </div>
+            <div className="inline-block mb-8">
+              <Tool style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 4px rgba(159, 1, 1, 0.4))' }} className="w-16 h-16" />
+            </div>
+            
+            <h3 className="text-4xl md:text-5xl font-black text-silver-chrome mb-6">
+              CUSTOM MECHANICAL
+              <span style={{ color: 'var(--blood-red-bright)', textShadow: '0 0 4px rgba(159, 1, 1, 0.2)' }} className="block text-5xl md:text-6xl">
+                SOLUTIONS
+              </span>
+            </h3>
+                 
+                 <div className="metal-surface inline-block px-8 py-6 transform rotate-1 mb-8">
+                   <p className="font-mono text-xl text-steel-gray max-w-2xl">
+                     SPECIALIZED PROTOTYPING • CUSTOM FABRICATION • MILITARY-SPEC • R&D CONSULTING
+                   </p>
+                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-8 justify-center">
                   <button 
@@ -280,9 +280,9 @@ export function Services() {
                     className="metal-surface px-10 py-6 transform skewX-2 transition-transform hover:skewX-1 hover:scale-105"
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    <span className="font-subheading font-black text-xl tracking-widest text-concrete-light">
-                      // ALL SERVICES
-                    </span>
+                     <span className="font-subheading font-black text-xl tracking-widest text-steel-gray">
+                       // ALL SERVICES
+                     </span>
                   </button>
                 </div>
               </div>

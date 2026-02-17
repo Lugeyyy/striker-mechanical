@@ -33,9 +33,9 @@ export function Navigation() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'metal-surface border-b-2 border-rust-accent' 
+        ? 'metal-surface border-b-2' 
         : 'bg-transparent'
-    }`}>
+    }`} style={{ borderColor: 'var(--blood-red)' }}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Brutalist Logo */}
@@ -43,23 +43,23 @@ export function Navigation() {
             <div className={`relative transform transition-all duration-500 group-hover:rotate-12 ${
               isScrolled ? 'scale-90' : 'scale-100'
             }`}>
-              <div className="absolute inset-0 bg-rust-accent blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div className="absolute inset-0" style={{ background: 'var(--blood-red-echo)', filter: 'blur-xl', opacity: 0.3 }} className="group-hover:opacity-50 transition-opacity"></div>
               <div className="relative metal-surface p-3">
-                <Wrench className="w-8 h-8 text-rust-accent gear-grind" />
+                <Wrench style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 3px rgba(159, 1, 1, 0.4))' }} className="w-8 h-8 gear-grind" />
               </div>
             </div>
             <div>
               <h1 className={`text-2xl md:text-3xl font-black transition-all duration-500 leading-none ${
-                isScrolled ? 'text-brushed-metal' : 'text-brushed-metal'
+                isScrolled ? 'text-silver-chrome' : 'text-silver-chrome'
               }`}>
                 STRIKER
-                <span className={`block text-lg md:text-xl font-black transition-colors duration-500 ${
-                  isScrolled ? 'text-rust-accent' : 'text-rust-accent'
+                <span style={{ color: 'var(--blood-red-bright)' }} className={`block text-lg md:text-xl font-black transition-colors duration-500 ${
+                  isScrolled ? '' : ''
                 }`}>
                   MECHANICAL
                 </span>
               </h1>
-              <div className="font-mono text-xs tracking-widest text-concrete-light mt-1">
+              <div className="font-mono text-xs tracking-widest text-steel-gray mt-1">
                 // HEAVY DUTY INDUSTRIAL
               </div>
             </div>
@@ -81,26 +81,35 @@ export function Navigation() {
                   <div className={`flex items-center gap-2 px-4 py-2 metal-surface transform skewX-2 group-hover:skewX-1 transition-all ${
                     isScrolled ? 'opacity-90' : 'opacity-80'
                   }`}>
-                    <Icon className="w-4 h-4 text-rust-accent" />
-                    <span className="font-heading font-black tracking-wider text-concrete-light text-sm">
+                    <Icon style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 2px rgba(159, 1, 1, 0.3))' }} className="w-4 h-4" />
+                    <span className="font-heading font-black tracking-wider text-steel-gray text-sm">
                       {item.label}
                     </span>
                   </div>
-                  <div className="absolute -bottom-1 left-0 right-0 h-px bg-rust-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute -bottom-1 left-0 right-0 h-px" style={{ background: 'var(--blood-red-echo)', opacity: 0 }} className="group-hover:opacity-100 transition-opacity"></div>
                 </button>
               );
             })}
             
             {/* Industrial Quick Actions */}
-            <div className="flex items-center gap-4 pl-6 border-l-2 border-rust-accent">
+            <div className="flex items-center gap-4 pl-6 border-l-2" style={{ borderColor: 'var(--blood-red-echo)' }}>
               <button
                 onClick={() => window.location.href = 'tel:+17802681188'}
-                className="industrial-button bg-safety-green hover:bg-green-600"
+                className={`relative transition-all duration-300 ${
+                  isScrolled ? 'scale-90' : 'scale-100'
+                }`}
               >
-                <Phone className="w-4 h-4" />
-                <span className="hidden xl:inline">EMERGENCY</span>
+                <div className="metal-surface p-3">
+                  <Phone style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 3px rgba(159, 1, 1, 0.4))' }} className="w-6 h-6" />
+                </div>
               </button>
               <ThemeToggle />
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="metal-surface p-3 transition-all duration-300"
+              >
+                {isOpen ? <X style={{ color: 'var(--blood-red-bright)' }} className="w-6 h-6" /> : <Menu style={{ color: 'var(--blood-red-bright)' }} className="w-6 h-6" />}
+              </button>
             </div>
           </div>
 
@@ -113,24 +122,22 @@ export function Navigation() {
               }`}
             >
               <div className="metal-surface p-3">
-                <Phone className="w-6 h-6 text-safety-green" />
+                <Phone style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 3px rgba(159, 1, 1, 0.4))' }} className="w-6 h-6" />
               </div>
             </button>
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`metal-surface p-3 transition-all duration-300 ${
-                isScrolled ? 'transform rotate-0' : isOpen ? 'transform rotate-90' : 'transform rotate-0'
-              }`}
+              className="metal-surface p-3 transition-all duration-300"
             >
-              {isOpen ? <X className="w-6 h-6 text-rust-accent" /> : <Menu className="w-6 h-6 text-rust-accent" />}
+              {isOpen ? <X style={{ color: 'var(--blood-red-bright)' }} className="w-6 h-6" /> : <Menu style={{ color: 'var(--blood-red-bright)' }} className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
         {/* Industrial Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden border-t-2 border-rust-accent concrete-texture">
+          <div className="lg:hidden border-t-2" style={{ borderColor: 'var(--blood-red-echo)' }} className="concrete-texture">
             <div className="py-6 space-y-4">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
@@ -143,13 +150,13 @@ export function Navigation() {
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 metal-surface flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-rust-accent" />
+                        <Icon style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 2px rgba(159, 1, 1, 0.3))' }} className="w-6 h-6" />
                       </div>
                       <div className="text-left">
-                        <div className="font-heading font-black text-brushed-metal text-lg">
+                        <div className="font-heading font-black text-silver-chrome text-lg">
                           {item.label}
                         </div>
-                        <div className="font-mono text-xs text-concrete-light">
+                        <div className="font-mono text-xs text-steel-gray">
                           {item.id === 'hero' && '// MAIN CONTROL'}
                           {item.id === 'services' && '// SERVICE DECK'}
                           {item.id === 'contact' && '// COMMUNICATIONS'}
@@ -161,23 +168,23 @@ export function Navigation() {
               })}
               
               {/* Mobile Industrial Actions */}
-              <div className="pt-4 border-t-2 border-rust-accent space-y-3">
+              <div className="pt-4 border-t-2" style={{ borderColor: 'var(--blood-red-echo)' }} className="space-y-3">
                 <button
                   onClick={() => window.location.href = 'mailto:ryansteenhart@gmail.com'}
                   className="w-full metal-surface p-4 transform skewX-2 hover:skewX-1 transition-all"
                 >
                   <div className="flex items-center gap-3">
-                    <Mail className="w-5 h-5 text-warning-orange" />
-                    <span className="font-heading font-black text-concrete-light">EMAIL TERMINAL</span>
+                    <Mail style={{ color: 'var(--blood-red-bright)', filter: 'drop-shadow(0 0 2px rgba(159, 1, 1, 0.3))' }} className="w-5 h-5" />
+                    <span className="font-heading font-black text-steel-gray">EMAIL TERMINAL</span>
                   </div>
                 </button>
                 <button
                   onClick={() => window.location.href = 'tel:+17802681188'}
-                  className="w-full industrial-button bg-safety-green"
+                  className="w-full industrial-button"
                 >
                   <div className="flex items-center justify-center gap-3">
                     <Phone className="w-5 h-5" />
-                    <span className="font-heading font-black">EMERGENCY LINE</span>
+                    <span className="font-heading font-black">CALL NOW</span>
                   </div>
                 </button>
               </div>
